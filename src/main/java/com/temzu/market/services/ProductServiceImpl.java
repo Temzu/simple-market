@@ -15,8 +15,8 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class ProductServiceImpl implements ProductService {
-    private ProductMapper mapper;
-    private ProductRepository productRepository;
+    private final ProductMapper mapper;
+    private final ProductRepository productRepository;
 
     @Override
     public Page<ProductDto> getAllProducts(Specification<Product> spec, int page, int pageSize) {
@@ -32,7 +32,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public ProductDto getProductById(Long id) {
         return mapper.toProductDto(productRepository
-                .findById(id).orElseThrow(() -> new ProductNotFoundException("Product with id: \"" + id + "\" not found")));
+                .findById(id).orElseThrow(() -> new ProductNotFoundException("Product with id: " + id + " not found")));
     }
 
     @Override

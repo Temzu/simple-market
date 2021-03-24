@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 public class ProductSpecifications {
     private static Specification<Product> priceLesserOrEqualsThan(int maxPrice) {
-        return (Specification<Product>) (root, criteriaQuery, criteriaBuilder) -> criteriaBuilder.lessThanOrEqualTo(root.get("price"), maxPrice);
+        return (root, criteriaQuery, criteriaBuilder) -> criteriaBuilder.lessThanOrEqualTo(root.get("price"), maxPrice);
     }
 
     private static Specification<Product> priceGreaterOrEqualsThan(int minPrice) {
