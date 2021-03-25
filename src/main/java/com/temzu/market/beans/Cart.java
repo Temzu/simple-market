@@ -30,12 +30,10 @@ public class Cart {
         items.stream().filter(item -> item.getProduct().getId().equals(id))
                 .findFirst().ifPresentOrElse(
                         orderItem -> {
-                            System.out.println("1");
                             orderItem.incrementQuantity();
                             recalculate();
                         },
                         () -> {
-                            System.out.println("2");
                             Product product = productService.getProductById(id).orElseThrow(() -> new ProductNotFoundException("Unable to find product with id: " + id + " (add to cart)"));
                             OrderItem orderItem = new OrderItem(product);
                             items.add(orderItem);
